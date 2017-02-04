@@ -1,0 +1,20 @@
+[
+    { 
+        "name" : "Almudena", 
+        "specialty" : "networks", 
+        "institution" : "Mills",
+        "courses":  [ "CS170" , "CS186", "CS133", "CS131", "CS232"]},
+    { 
+        "name" : "Susan", 
+        "specialty" : "algorithms", 
+        "institution" : "Mills", 
+        "courses" :  [ "CS124" , "CS125", "CS127", "CS128"]    },
+    
+    { 
+        "name" : "Ellen", 
+        "specialty" : "information retrieval", 
+        "institution" : "Mills",
+        "courses":  [ "CS114", "CS111", "CS115"]
+        
+    }
+]

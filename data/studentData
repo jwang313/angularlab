@@ -1,0 +1,20 @@
+db.students.save({
+    name: 'Trudy',
+    address: 'La colina, Trudy City, CA',
+    classes: ['cs131', 'cs133'],
+    yearEnter: 2017,
+    coords: [-122.0321800, 37.8502000],
+    opportunity: [ {
+                        title: 'google',
+                        type: 'intern'}] 
+});
+
+// Position for Trudy:
+// $push adds a new object to opportunity path 
+db.students.update({
+name: 'Trudy'}, 
+    {
+    $push: {    
+            opportunities: {  title: 'Berkeley', type: 'URO'} 
+        }
+   });

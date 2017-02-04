@@ -1,0 +1,9 @@
+[{
+    "_id":{"$oid":"587d3531281a6029ef84c941"},
+    "name":"Almudena",
+    "specialty":"networks",
+    "institution":"Mills"},
+    
+ {
+     "_id":{"$oid":"587d61e9281a6029ef84c942"},
+     "name":"Susan","specialty":"algorithms","institution":"Mills"},{"_id":{"$oid":"587d61e9281a6029ef84c943"},"name":"Ellen","specialty":"information retrieval","institution":"Mills"}]
