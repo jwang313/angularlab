@@ -1,8 +1,12 @@
 var mongoose = require('mongoose');
 var dbURI = 'mongodb://localhost/meandb';
+
+//connect to MongoDB using mongoose
+// no callbacks after DB connection, instead mongoose listens for events
 mongoose.connect(dbURI);
 
 // CONNECTION EVENTS
+// events: connected, error, disconnected 
 mongoose.connection.on('connected', function() {
     console.log('Mongoose connected to ' + dbURI);
 });
@@ -25,3 +29,7 @@ var gracefulShutdown = function(msg, callback) {
         callback();
     });
 };
+
+// BRING IN YOUR SCHEMAS
+require('./students');
+require('./faculty');

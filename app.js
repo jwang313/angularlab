@@ -1,12 +1,10 @@
-// open db connection is expensive
-require('./app_server/models/dbconnection.js').open();
+// using mongoose to connect to DB 
+require('./app_server/models/db');
 
 var path = require('path');
 
 // require module
 var express = require('express');
-
-require('./app_server/models/db');
 
 // for routes 
 var routes = require('./app_server/routes/index');
