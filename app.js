@@ -1,3 +1,6 @@
+// Note: use either native driver or mongoose to connect to DB 
+
+// using native driver to connect to DB
 // open db connection is expensive
 require('./app_server/models/dbconnection.js').open();
 
@@ -5,8 +8,6 @@ var path = require('path');
 
 // require module
 var express = require('express');
-
-require('./app_server/models/db');
 
 // for routes 
 var routes = require('./app_server/routes/index');

@@ -6,6 +6,9 @@ var ctrlMain = require('../controllers/main');
 // routes for faculty  
 var ctrlFaculty = require('../controllers/faculty.controllers.js');
 
+// routes for students  
+var ctrlStudents = require('../controllers/students.controllers.js');
+
 // Main page
 router
     .route('/')
@@ -17,21 +20,14 @@ router
     .get(ctrlMain.testing);
 
 
-// // CRUD actions 
+// CRUD actions 
+// Read
 router
    .route('/faculty')
    .get(ctrlFaculty.facultyGetAll);
 
-// // Read 
-// router
-//   .route('/faculty/:facultyId')
-//   .get(ctrlFaculty.facultyGetOne);
-
-// // Create
-// router
-//   .route('/faculty/new')
-//   .post(ctrlFaculty.facultyAddOne);
-
-
+router
+   .route('/students')
+   .get(ctrlStudents.studentsGetAll);
 
 module.exports = router;
