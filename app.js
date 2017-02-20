@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 // using mongoose to connect to DB 
 require('./app_server/models/db');
+=======
+// Note: use either native driver or mongoose to connect to DB 
+
+// using native driver to connect to DB
+// open db connection is expensive
+require('./app_server/models/dbconnection.js').open();
+>>>>>>> 0d0094cb81174d05dd28fd7485e80b0cb2c34301
 
 var path = require('path');
 
