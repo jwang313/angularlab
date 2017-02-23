@@ -36,4 +36,4 @@ var studentSchema = new mongoose.Schema({
 
 // model name, schema name, collection name (optional)
 // collection name will be Students by default 
-mongoose.model('Student', studentSchema, 'Students');
+mongoose.model('Student', studentSchema, 'students');

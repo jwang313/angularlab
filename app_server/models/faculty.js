@@ -15,5 +15,6 @@ var facultySchema = new mongoose.Schema({
 });
 
 // model name, schema name, collection name (optional)
+// collection name will be lower case and plural 
 // collection name will be Students by default 
-mongoose.model('Faculty', facultySchema, 'Faculty');
+mongoose.model('Faculty', facultySchema, 'faculty');
