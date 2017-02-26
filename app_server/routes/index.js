@@ -23,15 +23,15 @@ router
     .get(ctrlMain.testing);
 
 // CRUD actions for Faculty 
-// Read and Create 
 router
     .route('/faculty')
     .get(ctrlFaculty.facultyGetAll)
     .post(ctrlFaculty.facultyAddOne);
 
-// Read one
 router
   .route('/faculty/:facultyId')
+  .put(ctrlFaculty.facultyUpdateOne)
+  .delete(ctrlFaculty.facultyDeleteOne)
   .get(ctrlFaculty.facultyGetOne);
 
 
