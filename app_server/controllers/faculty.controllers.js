@@ -43,10 +43,9 @@ module.exports.facultyGetOne = function(req, res) {
 
 module.exports.facultyAddOne = function(req, res) {
   console.log("POST new faculty");
-  //req.body is undefined 
+
   console.log('req params body' , req.params, req.body);
-  console.log('req.params.name');
-  
+
   Faculty
     .create({
       name : req.body.name,
@@ -87,7 +86,7 @@ module.exports.facultyUpdateOne = function(req, res) {
         console.log("Faculty not found", facultyId);
         res
           .status(404)
-          .lson({
+          .json({
             "message" : "Faculty not found " + facultyId
           });
           return;

@@ -21,7 +21,7 @@ var studentSchema = new mongoose.Schema({
         required: true
     },
     address: String,
-    classes: [String],
+    courses: [String],
     yearEnter: Number,
     institution: { 
         type: String,

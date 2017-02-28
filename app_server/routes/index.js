@@ -10,7 +10,7 @@ var ctrlFaculty = require('../controllers/faculty.controllers.js');
 var ctrlStudents = require('../controllers/students.controllers.js');
 
 // routes for opportunities  
-var ctrlOpportunities = require('../controllers/opportunities.controllers.js');
+var ctrlOpp = require('../controllers/opportunities.controllers.js');
 
 // Main page
 router
@@ -37,8 +37,27 @@ router
 
 // CRUD actions for Student
 router
-   .route('/students')
-   .get(ctrlStudents.studentsGetAll);
+    .route('/students')
+    .get(ctrlStudents.studentGetAll)
+    .post(ctrlStudents.studentAddOne);
 
+router
+  .route('/students/:studentId')
+  .put(ctrlStudents.studentUpdateOne)
+  .delete(ctrlStudents.studentDeleteOne)
+  .get(ctrlStudents.studentGetOne);
+
+
+
+
+
+
+
+
+// CRUD actions for Students opportunities
+router
+    .route('/students/:studentId/opportunities')
+    .post(ctrlOpp.oppAddOne)
+    .get(ctrlOpp.oppGetAll);
 
 module.exports = router;
