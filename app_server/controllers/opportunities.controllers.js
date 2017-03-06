@@ -1,57 +1,33 @@
-var mongoose = require('mongoose');
-var Student = mongoose.model('Student');
+// Ch 7 building an http client 
+var request = require('request');
+var server = "http://localhost:8080";
 
-module.exports.oppAddOne = function(req, res) {
-    console.log("POST new opp");
-    var id = req.params.studentId;
-    console.log('student id', id);
+// use this URL for productions
+if (process.env.NODE_ENV === 'production') {
+  server = "https://myapp.herokuapp.com";
+}
+
+
+module.exports.createOpp = function(req, res) {
+  console.log('Create opportunity', req.params.studentId);
+  var requestOptions, path, studentId, postdata;
   
-    Student
-      .findById(id)
-      .select('opportunity')
-      .exec(
-        function(err, student) {
-          if (err) {
-            res.status(500);
-            res.json(err);
-          } else {
-            student.opportunity.push({
-              title: req.body.title,
-              type: req.body.type,
-              
-            });
-            student.save(function(err, studentUpdated) {
-              var thisOpp;
-              if (err) {
-                res.status(500);
-                res.json(err);
-              } else {
-                thisOpp = studentUpdated.opportunity[studentUpdated.opportunity.length - 1];
-                res.status(200);
-                res.json(thisOpp);
-              }
-            });
-        }
-        });
-     
+  studentId = req.params.studentId;
+  
+  path = "/api/students/" + studentId + '/opportunities';
+
+  requestOptions = {
+    url : server + path,
+    method : "POST",
+    //json : postdata
+    form : {title: 'google', type: 'summer' }
+  
 };
 
-// Read all opportunities for a given student            
- module.exports.oppGetAll = function(req, res) {
-     
-    console.log('Read all opp for a given student');
-    console.log(req.params, req.params.studentId);
-    var id = req.params.studentId;
+  request( requestOptions,  function(err, response, body) {  
+    console.log(body);
+    res.json(body);   
     
-    Student
-    .findById(id)
-    .select('opportunity')
-    .exec(function(err, doc) {
-      console.log(doc);
-      res
-        .status(200)
-        .json(doc.opportunity);
-    });
-    
+  } );
 
- };
+};
