@@ -23,8 +23,8 @@
     myModel.name = 'faculty';
     
     $http.get('/api/faculty').then(function(response) {   // use .then instead of .success
-        myModel.reponse = response;
-        console.log('response');
+        myModel.response = response;
+        console.log(response);
       });
        
   }
