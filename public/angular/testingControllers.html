@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <script src="angular.min.js">  </script>  <!-- must be ref before other angular scripts -->
+    <title> Hello Angular </title>
+    <style>
+        body {background-color:lightblue }
+        .ng-cloak, [ng-cloak], [ng\:cloak] {
+            display: none !important;  
+            /* makes boostrapping process first, then evaluates values */ 
+        }
+    </style>
+    
+    <script> //create controllers  
+    // this code could be in a .js file, and ref as  <script src="file.js">  
+        
+        // assign contoller to the module 
+        angular.module('myApp', [])    // empty dependencies array 
+            .controller('MyController', MyController)   //append controller to module
+            .controller('AnotherController', AnotherController);
+            
+        function MyController($scope) {
+             // can assign value to a variable
+             $scope.name = 'Trudy';   
+             
+             // can assign a function to a variable
+             $scope.x = 0;
+             $scope.addOne = function() {
+                 $scope.x = $scope.x + 1;
+             }
+        }
+        
+        // Another controller doesn't use $scope
+        function AnotherController() {
+            var myModel = this;            
+            myModel.name = 'Bobby';   
+        }
+        
+    </script>
+</head>
+
+<body ng-cloak>
+<!-- Tell app to use the controller -->
+<div ng-controller="MyController">
+    <div ng-controller ="AnotherController as MyCon">  <!-- Mycon is a ref to controller-->
+        Hello {{ name}}   <br> 
+        Hello {{ MyCon.name }} <br>  
+    
+        <button ng-click="addOne()"> Add One</button>
+        {{ x }}
+    </div>
+ 
+</div>
+
+</body>
+</html>

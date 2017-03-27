@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app>
+
+<head>
+    <title> Hello Angular </title>
+    <style>
+        body {background-color:lightblue; }
+        .blue { color:blue; }
+        .green{ color:green; }
+        
+        .ng-cloak, [ng-cloak], [ng\:cloak] {
+            display: none !important;  
+            <!--- makes boostrapping process first, then evaluates values --> 
+        }
+    </style>
+</head>
+
+<body ng-cloak>
+ 
+ <div  ng-init="money = 222222.2222222"> 
+ 
+    <p> {{  money | currency }} </p>
+    
+    <p> {{  money | currency:"$$$" }} </p>
+    
+    <p> {{  money | number: 4 }} </p>
+    
+    <p> {{  -money | number: 4 }} </p> 
+ 
+ 
+ </div>
+ 
+ <div  ng-init="myString = trudy is working"> 
+ 
+    <p> {{  myString | uppercase }} </p>
+    
+ </div>
+
+
+<div ng-init= "y = [1,2,3]">  
+
+    <p>  {{ y | limitTo: 2 }} </p>
+    
+</div>    
+
+<br>
+<div ng-init= " faculty=[   {name : 'Trudy', specialty : 'networks' },
+                            {name : 'Alice', specialty : 'security' },
+                            {name : 'Bob', specialty : 'security' }]; "> 
+    <p> Ordered by name</p>
+    <div ng-repeat="elem in faculty | orderBy : 'name' "> {{elem.name }}   </div>
+    
+    <p> Ordered by name descending</p>
+    <div ng-repeat="elem in faculty | orderBy : '-name' "> {{elem.name }}  </div>
+
+    <p> Ordered by specialty and then by name </p>
+    <div ng-repeat="elem in faculty | orderBy : ['specialty' , 'name'] "> {{elem.specialty }} {{elem.name }}  </div>
+
+     <p> Filter filter  </p>
+    <div ng-repeat="elem in faculty | filter : 'Trudy' "> {{elem.specialty }} {{elem.name }}  </div>
+
+    <p> Filter by user input  </p>
+    <input type="text" ng-model="fac">
+    <div ng-repeat="elem in faculty | filter : fac "> {{elem.specialty }} {{elem.name }}  </div>
+
+    <p> Filter by user input (only the name) </p>
+    <input type="text" ng-model="fac.name">
+    <div ng-repeat="elem in faculty | filter : fac "> {{elem.specialty }} {{elem.name }}  </div>
+
+
+
+</div>
+
+
+
+<!--- At the end so it doesn't slow down displaying application in browser --> 
+<script src="angular.min.js">  </script> 
+</body>
+</html>

@@ -38,7 +38,7 @@ module.exports.createFac = function(req, res){
     //url : "http://localhost:8080/api/faculty" ,
     url: server + path,
     method : "POST",
-    form :  {name: 'Mac', specialty: 'AI' },  // from data
+    form :  {name: 'Trudy', specialty: 'Sec' },  // from data
     qs : {}
   };
   console.log('url: ', requestOptions.url);

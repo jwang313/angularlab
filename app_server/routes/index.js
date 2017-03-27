@@ -7,10 +7,6 @@ var ctrlMain = require('../controllers/main');
 var ctrlFac = require('../controllers/faculty.controllers');
 var ctrlOpp = require('../controllers/opportunities.controllers');
 
-// Main page
-router
-    .route('/')
-    .get(ctrlMain.index);
 
 // Testing route 
 router

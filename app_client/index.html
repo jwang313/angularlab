@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title> Hello Angular </title>
+    <style>
+        body {background-color:lightblue }
+    </style>
+   
+</head>
+
+<body>
+    <p> This is index.html in app_client </p>
+    <!--- insert templates form angular inside this div -->  
+    <div ng-view> </div>  
+
+<!--- Reference --> 
+
+<script src="../public/angular/angular.min.js">  </script> 
+<script src="lib/angular-route.min.js">  </script> 
+
+<script src="app.js">  </script>  <!--- This is the angular app w angular routes -->
+
+
+<script src="contact/contact.controller.js">  </script>
+<script src="other/controller.js">  </script>
+
+</body>
+</html>

@@ -1,31 +1,24 @@
-// using mongoose to connect to DB 
-require('./app_api/models/db.js');
+// Node app 
+
+require('./app_api/models/db.js');  // using mongoose to connect to DB 
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
-
-// Ch 7
-var routes = require('./app_server/routes/index');
 var routesApi = require('./app_api/routes/index');
-///
 
 app.set('port', process.env.PORT);
 
-app.set('views', path.join(__dirname, 'app_server','views'));
-app.set('view engine', 'jade');
+app.use(bodyParser.urlencoded({ extended: 'true' })); // parse application/x-www-form-urlencoded
+app.use(bodyParser.json()); 
 
-app.use(function(req, res, next) {
-  console.log('middlewear ', ' method:' , req.method, ' url: ', req.url);
-  next(); 
-});
+app.use('/api', routesApi); 
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'app_client')));
 
-app.use('/', routes);
-app.use('/api', routesApi);   
-
-
+app.get('/*', function (req, res) {
+       res.sendFile(__dirname + '/app_client/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+ });
 
 var server = app.listen(app.get('port'), function() {
        console.log('I am listening on port ' + server.address().port);

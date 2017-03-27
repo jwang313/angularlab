@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app>
+
+<head>
+    <title> Hello Angular </title>
+    <style>
+        body {background-color:lightblue; }
+        .blue { color:blue; }
+        .green{ color:green; }
+        
+        .ng-cloak, [ng-cloak], [ng\:cloak] {
+            display: none !important;  
+            /* makes boostrapping process first, then evaluates values */ 
+        }
+    </style>
+</head>
+
+<body ng-cloak>
+ 
+<p> We can evaluate JS expressions: {{ 5 == 6 }} {{ 3+8*2 }} </p> 
+
+<br>
+<p>Binding  </p> 
+<p> Hello   {{myInput }} </p>            <!--- output value of the model -->
+<input type="text" ng-model="myInput ">  <!--- bind input to model -->
+
+<br><br>
+<p>More Directives </p>
+ <div ng-init=" myName = 'Macarena' "> 
+    <p ng-bind = "myName">   </p>
+</div>
+
+<br> 
+<p> Manipulating elements </p>
+<div ng-init=" myNum = 0 "> 
+    <button ng-click= " myNum = myNum + 1"  </button>
+    {{  myNum  }}     
+
+</div>
+ 
+<br>
+Click the checkbox  <input type="checkbox" ng-model="isChecked">
+<p ng-if="isChecked"> Hello MEANies  </p>
+
+<br><br>
+<p> Guess a number: </p>
+<div ng-init= "x = 222">  
+    <input type="text" ng-model="myGuess">
+    <span ng-hide="myGuess != x"> Good job!!   </span>
+    <span ng-show="myGuess != x"> Not good!!   </span>
+</div>
+
+<br>Learning ng-class. Guess another number:<br>
+<div ng-init= "y = 222">  
+    <input type="text" ng-model="z" ng-class="{blue: z != y, green: z == y}">
+</div>    
+
+<br>Learning ng-repeat. <br>
+<div ng-init= "y = [1,2,3]">  
+    <span ng-repeat="elem in y">  {{ elem }}  </span>
+    
+</div>    
+
+<!-- ng-repeat iterates through unique elements in array, must use 
+track by $index in order to iterate through indexes -->
+<div ng-init= "names = [{name: 'Al', last: 'Kon'}, {name: 'Dy', last: 'Di'} ]">  
+    <span ng-repeat="elem in names track by $index">  {{ elem.name }} {{ elem.last }}   </span>
+    
+</div> 
+
+<br>Learning ng-options <br>
+<div ng-init= " faculty=[   {name : 'Trudy', specialty : 'networks' },
+                            {name : 'Alice', specialty : 'security' },
+                            {name : 'Bob', specialty : 'security' }]; "> 
+    <select ng-model="elem" ng-options="elem.name group by elem.specialty for elem in faculty">
+    </select>
+    <p>You have selected {{ elem.name }} , specialty: {{elem.specialty }} </p>
+</div>
+
+<!--- At the end so it doesn't slow down displaying application in browser --> 
+<script src="angular.min.js">  </script> 
+</body>
+</html>
