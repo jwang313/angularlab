@@ -15,8 +15,8 @@ router
 
 // Ch 7, implementing http client 
 router
-    .route('/home')
-    .get(ctrlFac.home);
+    .route('/')
+    .get(ctrlMain.index);
 
 router
     .route('/createFac')
